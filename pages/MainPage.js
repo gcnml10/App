@@ -5,6 +5,7 @@ import data from '../data.json';
 import Card from '../components/Card';
 import Loading from '../components/Loading';
 import { StatusBar } from 'expo-status-bar';
+import * as Linking from 'expo-linking';
 
 export default function MainPage({navigation,route}) {
   console.disableYellowBox = true;
@@ -50,6 +51,10 @@ export default function MainPage({navigation,route}) {
         }
     }
 
+    const link = () => {
+      Linking.openURL("https://spartacodingclub.kr")
+    }
+
 
 	let todayWeather = 10 + 17;
     let todayCondition = "흐림"
@@ -64,6 +69,8 @@ export default function MainPage({navigation,route}) {
         <StatusBar style="black" />
         {/* <Text style={styles.title}>나만의 꿀팁</Text> */}
         <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
+        <TouchableOpacity style={styles.aboutMeButton} onPress={()=>{navigation.navigate("AboutPage")}}><Text style={styles.aboutMeText}>소개 페이지</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.aboutMeButton} onPress={()=>{link()}}><Text style={styles.aboutMeText}>SCC</Text></TouchableOpacity>
         <Image style={styles.mainImage} source={main}/>
         <ScrollView style={styles.middleContainer} horizontal indicatorStyle={"white"}>
             <TouchableOpacity style={styles.middleButtonAll} onPress={()=>{category('전체보기')}}><Text style={styles.middleButtonTextAll}>전체보기</Text></TouchableOpacity>
@@ -102,10 +109,11 @@ const styles = StyleSheet.create({
   },
 weather:{
     alignSelf:"flex-end",
-    paddingRight:20
+    paddingRight:20,
+    marginTop:20,
   },
   mainImage: {
-    //컨텐츠의 넓이 값
+    //컨텐츠의 넓이 값s
     width:'90%',
     //컨텐츠의 높이 값
     height:200,
@@ -121,6 +129,20 @@ weather:{
     marginLeft:10,
     height:60
   },
+  aboutMeButton: {
+    width:100,
+    height:40,
+    padding:15,
+    backgroundColor:"#FAB7BB",
+    borderRadius:15,
+    margin:7,
+    alignSelf: "flex-end",
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  aboutMeText: {
+    color: '#fff'
+  },
   middleButtonAll: {
     width:100,
     height:50,
@@ -128,7 +150,7 @@ weather:{
     backgroundColor:"#20b2aa",
     borderColor:"deeppink",
     borderRadius:15,
-    margin:7
+    margin:7,
   },
   middleButton01: {
     width:100,

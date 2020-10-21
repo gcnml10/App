@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import {View,Text,StyleSheet,Image, TouchableOpacity} from 'react-native'
 
 
-export default function AboutPage(){
+export default function AboutPage(navigation){
     const aboutImage = "https://firebasestorage.googleapis.com/v0/b/sparta-image.appspot.com/o/lecture%2FaboutImage.png?alt=media&token=13e1c4f6-b802-4975-9773-e305fc7475c4"
+
+    useEffect(()=>{
+        navigationOptions({
+            title:'AboutPage',
+            // headerStyle: {
+            //     backgroundColor: '#000',
+            //     shadowColor: "#000",
+            // },
+            // headerTintColor: "#fff",
+        })
+    },[])
+
   return (
     <View style={styles.container}>
         <Text style={styles.title}>HI! 스파르타코딩 앱개발 반에 오신것을 환영합니다</Text>
