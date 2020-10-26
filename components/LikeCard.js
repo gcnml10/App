@@ -8,6 +8,7 @@ import Constants from 'expo-constants';
 export default function LikeCard({content,navigation,reload}){
 
     const detail = () => {
+      console.log(content.idx,"--------라이크카드에서 찍힌 것-------")
         navigation.navigate('DetailPage',{idx:content.idx})
     }
 

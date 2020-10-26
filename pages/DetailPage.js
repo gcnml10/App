@@ -17,7 +17,7 @@ export default function DetailPage({navigation,route}) {
     })
     
     useEffect(()=>{
-        console.log(route)
+        console.log(route,"~~~~~~~~~~~~DetailPage에서 찍힌 것~~~~~~~~~~~~~~~~")
         navigation.setOptions({
             title:route.params.title,
             headerStyle: {

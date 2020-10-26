@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import main from '../assets/main.png';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Platform} from 'react-native';
 import data from '../data.json';
 import Card from '../components/Card';
 import Loading from '../components/Loading';
@@ -8,6 +8,14 @@ import { StatusBar } from 'expo-status-bar';
 import * as Location from "expo-location";
 import axios from "axios"
 import {firebase_db} from "../firebaseConfig"
+
+import {
+  setTestDeviceIDAsync,
+  AdMobBanner,
+  AdMobInterstitial,
+  PublisherBanner,
+  AdMobRewarded
+} from 'expo-ads-admob';
 
 export default function MainPage({navigation,route}) {
   console.disableYellowBox = true;
@@ -135,7 +143,21 @@ export default function MainPage({navigation,route}) {
                 return (<Card content={content} key={i} navigation={navigation}/>)
             })
             }
-            
+            {Platform.OS === 'ios' ? (
+                <AdMobBanner
+                  bannerSize="fullBanner"
+                  servePersonalizedAds={true}
+                  adUnitID="ca-app-pub-3240035141364991/2102732236"
+                  style={styles.banner}
+                />
+            ) : (
+                <AdMobBanner
+                  bannerSize="fullBanner"
+                  servePersonalizedAds={true}
+                  adUnitID="ca-app-pub-3240035141364991/4453563401"
+                  style={styles.banner}
+                />
+            )}
         </View>
     </ScrollView>
   );
