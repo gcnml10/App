@@ -29,7 +29,7 @@ export default function Card({content,navigation}){
         AdMobInterstitial.addEventListener("interstitialDidClose", () => {
               //광고가 끝나면 다음 코드 줄이 실행!
             console.log("interstitialDidClose")
-            console.log(content.idx,"############Card.js에서 찍힌 것###############")
+            console.log(content.idx,"############Card.js에서 찍힌 것 >??>>>>>>>>>>>>>>>")
             navigation.navigate('DetailPage',{idx:content.idx})
         });
     },[])
